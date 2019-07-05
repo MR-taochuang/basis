@@ -1,0 +1,37 @@
+{
+  "type": "library",
+  "name": "easydev/basis",
+  "homepage": "https://github.com/MR-taochuang/basis.git",
+  "description": "PHP EASY DEVELOP RELY EASYDEV",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "mr.taochuang",
+      "email": "mr_taochuang@163.com",
+      "role": "developer"
+    }
+  ],
+  "keywords": [
+    "Alg",
+    "Cache",
+    "Curl",
+    "Encry",
+    "Data",
+    "Regex"
+  ],
+  "require": {
+    "php": ">=7.0",
+    "ext-json": "*",
+    "ext-curl": "*",
+    "ext-openssl": "*"
+  },
+
+  "autoload": {
+    "classmap": [
+      "autoload.php"
+    ],
+    "psr-4": {
+      "rely\\": "rely"
+    }
+  }
+}
