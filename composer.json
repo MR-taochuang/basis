@@ -27,11 +27,9 @@
   },
 
   "autoload": {
-    "classmap": [
-      "autoload.php"
-    ],
+	"files": [],
     "psr-4": {
-      "rely\\": "rely"
+      "rely\\": "src/rely/"
     }
   }
 }
