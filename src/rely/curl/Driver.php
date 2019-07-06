@@ -26,7 +26,8 @@ class Driver
      * @var \rely\init\Config;
      * setopt 配置参数
      */
-    private static $config = [
+    private static $config;
+    private static $init = [
         'timeout' => 60,
         'verifyhost' => 0,
         'sslcerttype' => 'PEM',
@@ -89,7 +90,7 @@ class Driver
     public function __construct($config = [])
     {
         self::$curl = curl_init();
-        self::$config = (new \ReflectionClass(Facade::bind('config')))->newInstanceArgs([array_merge(self::$config, $config)]);
+        self::$config = (new \ReflectionClass(Facade::bind('config')))->newInstanceArgs([array_merge(self::$init, $config)]);
     }
 
     /**
