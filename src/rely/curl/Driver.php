@@ -128,10 +128,10 @@ class Driver
     public function post($param, $type = 'array')
     {
         $dataswitch = Init::dataswitch();
-        if ($type == 'array') $dataswitch->toArray($param);
-        if ($type == 'json') $dataswitch->toJson($param);
-        if ($type == 'xml') $dataswitch->toXml($param);
-        self::setopt([CURLOPT_POST, true], [CURLOPT_POSTFIELDS, http_build_query($param)]);
+        if ($type == 'array') $param=http_build_query($dataswitch->toArray($param));
+        if ($type == 'json') $param=$dataswitch->toJson($param);
+        if ($type == 'xml') $param=$dataswitch->toXml($param);
+        self::setopt([CURLOPT_POST, true], [CURLOPT_POSTFIELDS, $param]);
         return self::request();
     }
 
