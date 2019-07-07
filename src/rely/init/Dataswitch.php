@@ -410,7 +410,7 @@ class Dataswitch
      * @return string
      * 随机字符
      */
-    public function create_number1($length = 6, int $type = 1)
+    public function create_number($length = 6, int $type = 1)
     {
         $chars = [
             1 => '0123456789abcdefghigklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
@@ -420,7 +420,7 @@ class Dataswitch
         ];
         $str = '';
         for ($i = 0; $i < $length; $i++) {
-            $str .= $chars[mt_rand(0, strlen($chars[$type]) - 1)];
+            $str .= $chars[$type][mt_rand(0, strlen($chars[$type]) - 1)];
         }
         return $str;
     }
