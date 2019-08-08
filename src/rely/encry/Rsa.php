@@ -54,8 +54,6 @@ class Rsa extends Config{
             return null;
         }
         return (openssl_public_encrypt($decrypted, $encrypted, self::getPublicKey())) ? $encrypted : null;
-
-
     }
     /**
      * 私钥解密
@@ -75,10 +73,11 @@ class Rsa extends Config{
      * @return $this
      * 分段公钥加密
      */
-    public function partPubEncrypt($decrypted='')
+    public function partPubEncrypt($decrypted='',$sign_type="rsa")
     {
+        $piecewise=$sign_type=='rsa'?117:234;
         if(empty($decrypted)) $decrypted=$this->data;
-        $dataArray = str_split($decrypted, 117);
+        $dataArray = str_split($decrypted,$piecewise);
         $bContent = '';
         foreach ($dataArray as $key => $subData) {
             $bContent .= self::publicEncrypt($subData);
@@ -90,11 +89,12 @@ class Rsa extends Config{
      * @param string $encrypted
      * @return //Ambigous <string, NULL, Ambigous>
      */
-    public function partPrivDecrypt($encrypted='')
+    public function partPrivDecrypt($encrypted='',$sign_type="rsa")
     {
+        $piecewise=$sign_type=='rsa'?128:256;
         if(empty($encrypted)) $encrypted=$this->data;
         $encrypted = base64_decode($encrypted);
-        $dataArray = str_split($encrypted, 128);
+        $dataArray = str_split($encrypted, $piecewise);
         $bContent = '';
         foreach ($dataArray as $key => $subData) {
             $bContent .= self::privDecryptNB64($subData);

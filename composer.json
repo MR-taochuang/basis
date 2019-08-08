@@ -27,7 +27,7 @@
   },
 
   "autoload": {
-	"files": [],
+    "files": [],
     "psr-4": {
       "rely\\": "src/rely/"
     }

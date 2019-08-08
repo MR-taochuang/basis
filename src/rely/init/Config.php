@@ -32,7 +32,7 @@ class Config implements \ArrayAccess
      * @return array
      * 获取config配置参数
      */
-    public function get(string $field = null)
+    public static function get(string $field = null)
     {
         if (is_null($field)) return self::$config;
         return isset(self::$config[$field]) ? self::$config[$field] : null;
@@ -44,7 +44,7 @@ class Config implements \ArrayAccess
      * @return $this
      * 设置config参数
      */
-    public function set(string $field, $value)
+    public  function set(string $field, $value)
     {
         self::$config[$field] = $value;
         return $this;
@@ -55,7 +55,7 @@ class Config implements \ArrayAccess
      * @return bool
      * 判断config配置是否存在
      */
-    public function has(string $field):bool
+    public static function has(string $field):bool
     {
         return !is_null($this->get($field));
     }
