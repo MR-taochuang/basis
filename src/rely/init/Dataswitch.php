@@ -440,4 +440,20 @@ class Dataswitch
         }
         return substr_replace($haystack, $replace, $pos, strlen($needle));
     }
+
+    /**
+     * @param $string /要截取的字符串
+     * @param $start /开始字符
+     * @param $end /结束字符
+     * @return string
+     * 截取两个字符串之间的数据
+     */
+    public function get_string_between($string, $start, $end=null){
+    $string = ' ' . $string;
+    $ini = strpos($string, $start);
+    if ($ini == 0) return '';
+    $ini += strlen($start);
+    $len = is_null($end)?strlen($string)-$ini:strpos($string, $end, $ini) - $ini;
+    return substr($string, $ini, $len);
+}
 }

@@ -36,6 +36,7 @@ class Redis extends Config{
         self::$redis = new \Redis();
         self::$redis->connect($host, $port);
         self::$redis->select($database);
+        if(is_null(self::$redis)) throw new \Exception('redis连接失败');
         return $this;
     }
     /**
@@ -72,7 +73,7 @@ class Redis extends Config{
      */
     public function insert(Array $data)
     {
-        $id = self::$redis->get(self::$table . '_id')??0;
+        $id = self::$redis->get(self::$table)??0;
         $id=$id+1;
         self::$redis->set(self::$table . '_id', $id);
         if (empty(self::$table)) throw new \Exception('请配置数据表');

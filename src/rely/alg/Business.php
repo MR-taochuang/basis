@@ -84,4 +84,31 @@ class Business extends Config
     {
         return Init::cache()->delete($draw_name);
     }
+
+    /**
+     * 创建名片信息
+     */
+    public function create_card(array $options){
+        $name=isset($options['name'])?$options['name']:'';
+        $surname=isset($options['surname'])?$options['surname']:'';
+        $work=isset($options['work'])?$options['work']:'';
+        $nickname=isset($options['nickname'])?$options['nickname']:'';
+        $mobile=isset($options['mobile'])?$options['mobile']:'';
+        $work_mobile=isset($options['work_mobile'])?$options['work_mobile']:'';
+        $company=isset($options['company'])?$options['company']:'';
+        $email=isset($options['email'])?$options['email']:'';
+        $country=isset($options['country'])?$options['country']:'';
+        $city=isset($options['city'])?$options['city']:'';
+        $area=isset($options['area'])?$options['area']:'';
+        $address=isset($options['address'])?$options['address']:'';
+        $work_country=isset($options['work_country'])?$options['work_country']:'';
+        $work_city=isset($options['work_city'])?$options['work_city']:'';
+        $work_area=isset($options['work_area'])?$options['work_area']:'';
+        $work_address=isset($options['work_address'])?$options['work_address']:'';
+        $postage=isset($options['postage'])?$options['postage']:'';
+        $work_postage=isset($options['work_postage'])?$options['work_postage']:'';
+        $info="BEGIN:VCARD\r\nVERSION:3.0\r\nN:{$name}\r\nFN:{$surname}\r\nTITLE:{$work}\r\nNICKNAME:{$nickname}\r\nTEL;CELL;VOICE:{$mobile}\r\nTEL;WORK;VOICE:{$work_mobile}\r\nORG:{$company}\r\nEMAIL;PREF;INTERNET:{$email}\r\nADR;TYPE=WORK:;;{$work_address};{$work_area};{$work_city};{$work_postage};{$work_country}\r\nADR;TYPE=HOME:;;{$address};{$area};{$city};{$postage};{$country}\r\nNOTE;ENCODING=QUOTED-PRINTABLE:备注来自名片通讯录\r\nEND:VCARD";
+        return $info;
+    }
+
 }

@@ -21,6 +21,8 @@ namespace rely;
  * @method \rely\cache\Redis redis($config=[]) static redis缓存机制
  * @method \rely\cache\File cache($config=[]) static 文件缓存机制
  * @method \rely\alg\Business business_alg() static 业务算法
+ * @method \rely\Init\Http http() static http 处理类
+ * @method \rely\alg\Email email() static 邮件发送类
  *
  */
 class Init {
